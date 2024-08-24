@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color:hsla(214, 72%, 17%, 0.329)">
+    <p class="text-secondary">Cohere | The leading AI platform for enterprise</p>
+    <form id="code-form" onsubmit="return false;">
+        <input type="text" name="input" id="input" placeholder="Entity to be calculated" required>
+        <button type="submit" onclick="generateCode()">Generate</button>
+    </form>
+    <div id="code"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function generateCode() {
+            const input = document.getElementById('input').value;
+            $.ajax({
+                url: '/generate_code',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ input1: input }),
+                success: function(response) {
+                    document.getElementById('code').innerText = response.suggestion;
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    alert('Error generating code.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
