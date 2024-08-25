@@ -24,7 +24,7 @@ def generate_suggestions():
         if not user_input:
             return jsonify({"error": "No input provided"}), 400
         prompt = f"Give me the code of {user_input}"
-        llm = Cohere(cohere_api_key="VtPgLFEG07sIpNimAG29i5LrwtR3OXIbIyEbjiba")
+        llm = Cohere(cohere_api_key="key")
         completion = llm.invoke(input=prompt)
         return jsonify({"suggestion": completion})
     except Exception as e:

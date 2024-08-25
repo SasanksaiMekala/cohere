@@ -1,0 +1,5 @@
+flask
+flask-cors
+cohere
+langchain
+langchain-cohere
